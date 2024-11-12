@@ -27,7 +27,6 @@ jobs:
       TRIVY_CHECKS_BUNDLE_REPOSITORY: "registry.aquasec.com/trivy-checks:1"
       OVERRIDE_SOURCE_BRANCH: "main"
       
-      
     permissions:
         id-token: write
     
