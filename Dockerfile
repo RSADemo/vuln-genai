@@ -1,7 +1,7 @@
 # Use the latest Python image
-FROM python:3.11-alpine
-#FROM cgr.dev/chainguard/python:latest-dev
-
+#FROM python:3.11-alpine
+FROM cgr.dev/chainguard/python:latest-dev
+USER root
 # Set the working directory in the container
 WORKDIR /app
 
