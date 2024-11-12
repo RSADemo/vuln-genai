@@ -25,6 +25,8 @@ jobs:
       TRIVY_DB_REPOSITORY: "registry.aquasec.com/trivy-db:2"
       TRIVY_JAVA_DB_REPOSITORY: "registry.aquasec.com/trivy-java-db:1"
       TRIVY_CHECKS_BUNDLE_REPOSITORY: "registry.aquasec.com/trivy-checks:1"
+      OVERRIDE_SOURCE_BRANCH: "main"
+      
       
     permissions:
         id-token: write
