@@ -40,7 +40,8 @@ jobs:
           remove-haskell: 'true'
       - name: Build image locally
         run: |
-          docker build -t "$ECR_REGISTRY/aquainteglab:$ECR_REPOSITORY$IMAGE_TAG" .
+          ls -la
+          docker build -f ./Dockerfile -t "$ECR_REGISTRY/aquainteglab:$ECR_REPOSITORY$IMAGE_TAG" .
       - name: Login to Aqua Registry and run Image Scan
         run: |
           docker login registry.aquasec.com -u ${{ secrets.TRIVY_USERNAME }} -p ${{ secrets.TRIVY_PASSWORD }}
