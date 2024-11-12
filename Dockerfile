@@ -17,9 +17,8 @@ RUN apk update && \
     pip install -U psutil && \
     pip install -U aiohttp==3.9.0rc0
     
-# Clean up the apt cache to reduce image size
-RUN apk clean && \
-    rm -rf /var/lib/apk/lists/*
+# Clean up the apk cache to reduce image size
+RUN rm -rf /var/cache/apk/*
 
 # Copy the entire project directory into the container at /app
 COPY . /app
