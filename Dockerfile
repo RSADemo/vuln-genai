@@ -10,7 +10,7 @@ COPY requirements.txt /app
 # Install Python packages specified in requirements.txt
 # and additional package psutil
 RUN apk update && \
-    apk add --no-cache libexpat1=2.6.2-r0 && \
+    apk add --no-cache libexpat gcc musl-dev libffi-dev && \
     pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt && \
     pip install -U psutil && \
