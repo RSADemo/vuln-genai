@@ -1,5 +1,6 @@
 # Use the latest Python image
-FROM python:3.8
+#FROM python:3.11-alpine
+FROM cgr.dev/chainguard/python:latest-dev
 
 # Set the working directory in the container
 WORKDIR /app
@@ -9,11 +10,13 @@ COPY requirements.txt /app
 
 # Update apt repositories, install packages, upgrade pip, and install requirements from requirements.txt
 # Also install psutil and a specific version of aiohttp
-RUN apt-get update && \
+RUN apk update && \
+    apk add --no-cache libexpat1=2.6.2-r0 && \
     pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt && \
     pip install -U psutil && \
     pip install -U aiohttp==3.9.0rc0
+    
 # Clean up the apt cache to reduce image size
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -22,4 +25,4 @@ RUN apt-get clean && \
 COPY . /app
 
 # Command to run on container start
-CMD ["python", "app.py"]
+CMD ["app.py"]
