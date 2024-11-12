@@ -1,6 +1,5 @@
 #FROM python:slim
 FROM cgr.dev/chainguard/python:latest-dev
-USER app
 WORKDIR /app
 COPY requirements.txt /app
 # Install Python packages specified in requirements.txt
@@ -13,4 +12,4 @@ RUN apk update && \
     pip install -U aiohttp==3.9.0rc0
 # Make sure the entire project directory is copied
 COPY . /app
-CMD ["app.py"]
+CMD ["python", "app.py"]
